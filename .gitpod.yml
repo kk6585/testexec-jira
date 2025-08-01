@@ -1,9 +1,19 @@
-image: mcr.microsoft.com/devcontainers/base:ubuntu
+image:
+  file: .gitpod.Dockerfile
 
 tasks:
-  - name: Setup Playwright
+  - name: Setup Node & Playwright
     init: |
       npm install
       npx playwright install
     command: |
-      echo "Ready to run tests! Use: npx playwright test"
+      npx playwright test
+
+vscode:
+  extensions:
+    - ms-playwright.playwright
+
+ports:
+  - port: 9323
+    onOpen: open-preview
+    description: Playwright HTML report (if generated)
