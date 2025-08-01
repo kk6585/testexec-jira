@@ -1,0 +1,9 @@
+image: mcr.microsoft.com/devcontainers/base:ubuntu
+
+tasks:
+  - name: Setup Playwright
+    init: |
+      npm install
+      npx playwright install
+    command: |
+      echo "Ready to run tests! Use: npx playwright test"
